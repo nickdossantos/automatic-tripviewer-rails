@@ -1,8 +1,58 @@
-<section class="signin">
-<h1>Automatic Tripviewer</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TripViewer: View and Export your Automatic Trips</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="description" content="View and Export your Automatic Trips">
+  <%= stylesheet_link_tag 'bootstrap/dist/css/bootstrap.min.css', media: 'screen' %>
+  <%= stylesheet_link_tag 'application', media: 'screen' %>
+  <link rel="stylesheet" type="text/css" href="/bower_components/mapbox.js/mapbox.css">
+</head>
 
-<section class="info-box">
-  <h1>View Your Trips</h1>
-  <p>Tripviewer shows trips taken with <%= link_to('Automatic', 'https://automatic.com', rel: 'external automatic') %>. See <em>summary stats</em>, inspect <em>individual trips</em> and <em>export trips as .csv</em>.</p>
-</section>
-</section>
+<body>
+<div class="github-fork-ribbon-wrapper">
+  <div class="github-fork-ribbon">
+    <a href="https://github.com/Automatic/tripviewer">Fork me on GitHub</a>
+  </div>
+</div>
+
+<div class="mainHeader">
+  <div class="wrapper">
+    <a href="http://automatic.com" class="logo"></a>
+    <div class="titlebar">
+      <h1>TripViewer</h1>
+      <div class="tagline">View and Export your Automatic Trips</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper content">
+  <div id="alert" class="alert"></div>
+  <div class="panel panel-default sign-in">
+    <div class="panel-body row">
+      <div class="col-md-4 col-md-offset-2 description">
+        <h2>View Your Trips</h2>
+        <p>TripViewer shows trips taken with <a href="http://automatic.com" rel="external">Automatic</a>. See summary stats, inspect individual trips and export trips as .csv.</p>
+      </div>
+      <div class="col-md-6">
+        <a href="/authorize/" class="center-block btn btn-primary btn-lg">
+          <span class="icon automatic-logo"></span>Sign in with Automatic</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/bower_components/polyline/src/polyline.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/underscore/underscore-min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js"></script>
+<script src="/bower_components/d3/d3.min.js"></script>
+<script src="/javascripts/helper.js"></script>
+<script src="/javascripts/data.js"></script>
+<script src="/javascripts/main.js"></script>
+
+</body>
+</html>
