@@ -1,6 +1,7 @@
 {
   "name": "TripViewerRails",
   "description" : "Automatic REST API Rails Demo Application",
+  "version" : "0.6.1",
   "author" : {
     "name": "Nate Klaiber",
     "email": "nate@theklaibers.com",
