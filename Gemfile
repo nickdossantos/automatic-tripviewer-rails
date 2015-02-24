@@ -14,8 +14,6 @@ gem 'foreman'
 gem 'bourbon'
 gem 'rails_12factor',             group: :production
 
-gem 'omniauth-automatic',         git: 'git@github.com:nateklaiber/omniauth-automatic.git'
-
 gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
 
