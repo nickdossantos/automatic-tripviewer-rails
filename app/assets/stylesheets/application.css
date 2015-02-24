@@ -2,5 +2,6 @@
  *= require 'bootstrap/dist/css/bootstrap.min'
  *= require 'mapbox.js/mapbox'
 */
+
 @import "bourbon";
 @import "style";
