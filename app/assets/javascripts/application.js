@@ -10,6 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+//
+//= require polyline/src/polyline.js
+//= require jquery/dist/jquery.min.js
+//= require underscore/underscore-min.js
+//= require bootstrap/dist/js/bootstrap.min.js
+//= require moment/min/moment.min.js
+//= require moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js
+//= require d3/d3.min.js
