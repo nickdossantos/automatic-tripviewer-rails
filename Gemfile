@@ -13,9 +13,10 @@ gem 'dotenv-rails'
 gem 'foreman'
 gem 'bourbon'
 gem 'rails_12factor',             group: :production
-
 gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
+
+gem 'bower-rails', '~> 0.9.2'
 
 group :development, :test do
   gem 'byebug'
