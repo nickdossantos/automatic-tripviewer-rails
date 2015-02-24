@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>TripViewer: View and Export your Automatic Trips</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="description" content="View and Export your Automatic Trips">
-  <%= stylesheet_link_tag 'application', media: 'screen' %>
+<title>TripViewer: View and Export your Automatic Trips</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="description" content="View and Export your Automatic Trips">
+<%= stylesheet_link_tag 'application', media: 'screen' %>
 </head>
 
 <body>
-<div class="github-fork-ribbon-wrapper">
-  <div class="github-fork-ribbon">
-    <a href="https://github.com/nateklaiber/automatic-tripviewer-rails">Fork me on GitHub</a>
-  </div>
-</div>
-
+<%= render partial: 'layouts/fork' %>
 <div class="mainHeader">
   <div class="wrapper">
     <a href="http://automatic.com" class="logo"></a>
@@ -41,7 +36,7 @@
   </div>
 </div>
 
-  <%= javascript_include_tag 'application' %>
+<%= javascript_include_tag 'application' %>
 
 </body>
 </html>
