@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TripViewer: View and Export your Automatic Trips</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="wrapper">
+<header>
+  <h1>Automatic TripViewer</h1>
+  <p class="byline">View and Export your Automatic Trips</p>
+</header>
+
+<section class="content">
+<%= yield %>
+</section>
+
+<footer>
+  <small>&copy; <%= Time.now.year %> <%= link_to('Automatic', 'https://automatic.com', rel: 'external') %></small>
+</footer>
+</div> <!-- /#wrapper -->
+</body>
+</html>
