@@ -26,24 +26,26 @@
                <div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
                <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                     <li class="active"><a href="/">Summary</a></li>
-                     <li><a href="/trips">Trips</a></li>
-                     <li><a href="/vehicles">Vehicles</a></li>
+                    <li class="active"><%= link_to('Summary', root_path) %></li>
+                    <li><%= link_to('Trips', trips_path) %></li>
+                    <li><%= link_to('Vehicles', vehicles_path) %></li>
                      <li class="dropdown">
                         <a id="export" href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Export All</span> <b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                           <li><a id="csv" href="/download/trips.csv" target="_blank">as .csv</a></li>
-                           <li><a id="json" href="/download/trips.json" target="_blank">as JSON</a></li>
+                          <li><%= link_to('as CSV', download_trips_path(format: :csv), rel: 'external', id: 'csv') %></li>
+                          <li><%= link_to('as JSON', download_trips_path(format: :json), rel: 'external', id: 'json') %></li>
                         </ul>
                      </li>
                   </ul>
+
                   <ul class="nav navbar-nav navbar-right">
-                     <li><a id="logout" href="/logout/">Log Out</a></li>
+                    <li><%= link_to('Log Out', logout_path, id: 'logout') %></li>
                   </ul>
                </div>
             </nav>
          </div>
       </div>
+
       <div class="wrapper content">
          <div id="alert" class="alert"></div>
          <div id="summary">
@@ -60,7 +62,13 @@
                   <div id="graphs" class="panel panel-default">
                      <div class="panel-heading">Weekly Driving</div>
                      <div class="panel-body">
-                        <div class="btn-group graph-buttons"><button type="button" data-graph-type="distance" class="btn btn-default active">Distance</button><button type="button" data-graph-type="duration_s" class="btn btn-default">Duration</button><button type="button" data-graph-type="trip_count" class="btn btn-default">Trips</button><button type="button" data-graph-type="fuel_cost_usd" class="btn btn-default">Fuel Cost</button><button type="button" data-graph-type="fuel_volume_usgal" class="btn btn-default">Fuel Volume</button></div>
+                       <div class="btn-group graph-buttons">
+                         <button type="button" data-graph-type="distance" class="btn btn-default active">Distance</button>
+                         <button type="button" data-graph-type="duration_s" class="btn btn-default">Duration</button>
+                         <button type="button" data-graph-type="trip_count" class="btn btn-default">Trips</button>
+                         <button type="button" data-graph-type="fuel_cost_usd" class="btn btn-default">Fuel Cost</button>
+                         <button type="button" data-graph-type="fuel_volume_usgal" class="btn btn-default">Fuel Volume</button>
+                     </div>
                         <div class="graph"></div>
                      </div>
                   </div>
