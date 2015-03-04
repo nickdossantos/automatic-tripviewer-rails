@@ -17,7 +17,7 @@
     </div>
 
     <div class="tripSummary" data-path="<%= @trip.path %>">
-      <div class="endAddress"><%= @trip.end_address.short_name %></div>
+      <div class="endAddress" data-lon="<%= @trip.end_location.longitude %>" data-lat="<%= @trip.end_location.latitude %>"><%= @trip.end_address.short_name %></div>
       <div class="tripSummaryBox">
         <div class="distance"><%= ("%.1f" % [@trip.distance_in_miles]) %></div>
         <div class="hardBrakes <%= hard_brakes_class(@trip.hard_brakes) %>">
@@ -44,7 +44,7 @@
         <% end %>
         </div>
       </div>
-      <div class="startAddress"><%= @trip.start_address.short_name %></div>
+      <div class="startAddress" data-lon="<%= @trip.start_location.longitude %>" data-lat="<%= @trip.start_location.latitude %>"><%= @trip.start_address.short_name %></div>
     </div>
   </div>
 </div>
