@@ -14,8 +14,18 @@ gem 'bourbon'
 gem 'rails_12factor',             group: :production
 gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
+gem 'will_paginate'
+gem 'restless_router'
+
+gem 'multi_json'
+gem 'faraday'
+gem 'faraday_middleware',         git: "https://github.com/lostisland/faraday_middleware.git"
+gem 'faraday-http-cache'
 
 gem 'bower-rails', '~> 0.9.2'
+
+gem 'omniauth-automatic',         git: "git@github.com:nateklaiber/omniauth-automatic.git"
+#gem 'omniauth-automatic',         path: "/Users/nateklaiber/desktop/omniauth-automatic"
 
 group :development, :test do
   gem 'byebug'
