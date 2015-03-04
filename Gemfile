@@ -24,9 +24,6 @@ gem 'faraday-http-cache'
 
 gem 'bower-rails', '~> 0.9.2'
 
-gem 'omniauth-automatic',         git: "git@github.com:nateklaiber/omniauth-automatic.git"
-#gem 'omniauth-automatic',         path: "/Users/nateklaiber/desktop/omniauth-automatic"
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
