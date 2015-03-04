@@ -1,0 +1,50 @@
+<%= link_to(trips_path, class: 'back btn btn-default') do %>
+  <span class="glyphicon glyphicon-chevron-left"></span> Back
+<% end %>
+
+<div id="trip">
+  <h2>Drive to <%= @trip.end_address.short_name %> on <%= @trip.started_at.to_s(:tile_date) %></h2>
+  <div id="map<%= @trip.id %>" class="map leaflet-container leaflet-fade-anim" style="position: relative;"></div>
+  <div class="trip tile">
+    <div class="times">
+      <div class="endTime"><%= @trip.ended_at.to_s(:tile_time) %></div>
+      <div class="duration"><%= @trip.minutes_driven.round %> min</div>
+      <div class="startTime"><%= @trip.started_at.to_s(:tile_time) %></div>
+      <div class="tripLine">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="tripSummary" data-path="<%= @trip.path %>">
+      <div class="endAddress"><%= @trip.end_address.short_name %></div>
+      <div class="tripSummaryBox">
+        <div class="distance"><%= ("%.1f" % [@trip.distance_in_miles]) %></div>
+        <div class="hardBrakes <%= hard_brakes_class(@trip.hard_brakes) %>">
+          <% if @trip.hard_brakes? %>
+            <%= @trip.hard_brakes %>
+        <% else %>
+            <i class="glyphicon glyphicon-ok"></i>
+        <% end %>
+        </div>
+        <div class="mpg"><%= @trip.average_mpg %></div>
+        <div class="hardAccels <%= hard_accels_class(@trip.hard_accels) %>">
+          <% if @trip.hard_accels? %>
+            <%= @trip.hard_accels %>
+        <% else %>
+            <i class="glyphicon glyphicon-ok"></i>
+        <% end %>
+        </div>
+        <div class="fuelCost"><%= @trip.fuel_cost %></div>
+        <div class="durationOver70 <%= speeding_class(@trip.duration_over_70_s) %>">
+          <% if @trip.minutes_over_70? %>
+            <%= @trip.minutes_over_70 %>
+        <% else %>
+            <i class="glyphicon glyphicon-ok"></i>
+        <% end %>
+        </div>
+      </div>
+      <div class="startAddress"><%= @trip.start_address.short_name %></div>
+    </div>
+  </div>
+</div>
