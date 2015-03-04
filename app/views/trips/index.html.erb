@@ -1,0 +1,53 @@
+<div id="trips">
+  <% if @trips.any? %>
+    <% @trips.each do |trip| %>
+    <div class="trip tile">
+    <%= link_to(trip_path(trip.id)) do %>
+      <div class="times">
+        <div class="endTime"><%= trip.ended_at.to_s(:tile_date) %><br><%= trip.ended_at.to_s(:tile_time) %></div>
+        <div class="duration"><%= trip.minutes_driven.round %> min</div>
+        <div class="startTime"><%= trip.started_at.to_s(:tile_date) %><br><%= trip.started_at.to_s(:tile_time) %></div>
+        <div class="tripLine">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="tripSummary" data-path="<%= trip.path %>">
+        <div class="endAddress" data-lon="<%= trip.end_location.longitude %>" data-lat="<%= trip.end_location.latitude %>"><%= trip.end_address.short_name %></div>
+        <div class="tripSummaryBox">
+          <div class="distance"><%= "%.1f" % [trip.distance_in_miles] %></div>
+          <div class="mpg"><%= "%.1f" % [trip.average_mpg] %></div>
+          <div class="fuelCost"><%= "%.2f" % [trip.fuel_cost] %></div>
+          <div class="hardBrakes <%= hard_brakes_class(trip.hard_brakes) %>">
+            <% if trip.hard_brakes? %>
+              <%= trip.hard_brakes %>
+          <% else %>
+              <i class="glyphicon glyphicon-ok"></i>
+          <% end %>
+          </div>
+          <div class="hardAccels <%= hard_accels_class(trip.hard_accels) %>">
+            <% if trip.hard_accels? %>
+              <%= trip.hard_accels %>
+          <% else %>
+              <i class="glyphicon glyphicon-ok"></i>
+          <% end %>
+          </div>
+          <div class="durationOver70 <%= speeding_class(trip.duration_over_70_s) %>">
+            <% if trip.minutes_over_70? %>
+              <%= trip.minutes_over_70 %>
+          <% else %>
+              <i class="glyphicon glyphicon-ok"></i>
+          <% end %>
+          </div>
+        </div>
+        <div class="startAddress" data-lon="<%= trip.start_location.longitude %>" data-lat="<%= trip.start_location.latitude %>"><%= trip.start_address.short_name %></div>
+      </div>
+    <% end %>
+    <div id="map<%= trip.id %>" class="map"></div>
+  </div>
+<% end %>
+<div class="apple_pagination">
+  <%= will_paginate(@pagination) %>
+</div>
+<% end %>
+</div>
