@@ -1,5 +1,5 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
+timeout 50
 preload_app true
 
 listen ENV.fetch('UNICORN_SOCKET', "/tmp/tripviewer-rails.sock"), :backlog => 64
