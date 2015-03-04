@@ -1,3 +1,7 @@
+require File.expand_path('../response/metadata.rb', __FILE__)
+
+require File.expand_path('../response/pagination.rb', __FILE__)
+
 require File.expand_path('../response/link_header.rb', __FILE__)
 
 require File.expand_path('../response/links.rb', __FILE__)

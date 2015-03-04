@@ -56,6 +56,14 @@ module Automatic
         self.trips.total_minutes_driven
       end
 
+      def fuel_cost
+        self.trips.total_fuel_cost
+      end
+
+      def fuel_gallons
+        self.trips.total_fuel_gallons
+      end
+
       def trips_count
         self.trips.count
       end

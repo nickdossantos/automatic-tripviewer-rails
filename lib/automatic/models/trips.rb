@@ -21,6 +21,14 @@ module Automatic
         self.inject(0) { |accum,record| accum += record.minutes_driven; accum }
       end
 
+      def total_fuel_cost
+        self.inject(0) { |accum,record| accum += record.fuel_cost; accum }
+      end
+
+      def total_fuel_gallons
+        self.inject(0) { |accum,record| accum += record.fuel_gallons; accum }
+      end
+
       private
       def record_collection
         @collection.map { |r| Trip.new(r) }
