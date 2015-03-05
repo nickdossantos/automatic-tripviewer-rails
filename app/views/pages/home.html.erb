@@ -13,6 +13,9 @@
               <span class="badge"><%= Time.at(@trips.total_seconds_driven).utc.strftime("%H h %M min") %></span> Duration
             </li>
             <li class="list-group-item">
+              <span class="badge"><%= to_duration(@trips.total_seconds_driven) %></span> Duration
+            </li>
+            <li class="list-group-item">
               <span class="badge"><%= @trips.count %></span> Trip Count
             </li>
             <li class="list-group-item">
