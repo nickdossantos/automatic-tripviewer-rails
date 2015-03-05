@@ -4,7 +4,28 @@
     <div style="clear: both;" class="col-sm-4">
       <div id="overall" class="panel panel-default">
         <div class="panel-heading">Total Automatic Stats</div>
-        <div class="panel-body"></div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge"><%= @trips.total_miles_driven.round %></span> Miles Driven
+            </li>
+            <li class="list-group-item">
+              <span class="badge"><%= Time.at(@trips.total_seconds_driven).utc.strftime("%H h %M min") %></span> Duration
+            </li>
+            <li class="list-group-item">
+              <span class="badge"><%= @trips.count %></span> Trip Count
+            </li>
+            <li class="list-group-item">
+              <span class="badge"><%= "%.1f" % [@trips.average_mpg] %></span> Average MPG
+            </li>
+            <li class="list-group-item">
+              <span class="badge"><%= "%.1f" % [@trips.total_fuel_gallons] %></span> Gallons of Fuel
+            </li>
+            <li class="list-group-item">
+              <span class="badge"><%= "$%.2f" % [@trips.total_fuel_cost] %></span> Fuel Cost
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="col-sm-8">
