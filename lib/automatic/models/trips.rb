@@ -34,9 +34,7 @@ module Automatic
       end
 
       def average_mpg
-        averages = self.inject(0) { |accum,record| accum += record.average_mpg; accum }
-
-        (averages.to_f/self.count)
+        (self.total_miles_driven.to_f / self.total_fuel_gallons.to_f)
       end
 
       private
