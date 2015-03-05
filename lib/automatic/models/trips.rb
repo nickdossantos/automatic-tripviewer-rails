@@ -17,6 +17,10 @@ module Automatic
         self.inject(0) { |accum,record| accum += record.distance_in_miles; accum }
       end
 
+      def total_seconds_driven
+        self.inject(0) { |accum,record| accum += record.duration; accum }
+      end
+
       def total_minutes_driven
         self.inject(0) { |accum,record| accum += record.minutes_driven; accum }
       end
@@ -27,6 +31,12 @@ module Automatic
 
       def total_fuel_gallons
         self.inject(0) { |accum,record| accum += record.fuel_gallons; accum }
+      end
+
+      def average_mpg
+        averages = self.inject(0) { |accum,record| accum += record.average_mpg; accum }
+
+        (averages.to_f/self.count)
       end
 
       private
