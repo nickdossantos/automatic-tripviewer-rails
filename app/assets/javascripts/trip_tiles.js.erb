@@ -1,0 +1,82 @@
+var mapBoxToken  = $('meta[name="x-mapbox-token"]').attr('content');
+var tripMapTiles = $('#trips .tile .map');
+var trips        = $('#trips .trip');
+
+var tripMapTiles = $('#trips .tile .map');
+var trips        = $('#trips .trip');
+
+L.mapbox.accessToken = mapBoxToken;
+
+var MapTile = {
+  styleId: 'automatic.h5kpm228',
+  lineStyle: {
+    color: '#08b1d5',
+    opacity: 0.9
+  },
+  iconStyle: {
+    iconSize: [25, 41],
+    iconAnchor: [12, 40],
+    popupAnchor: [0,-41],
+    shadowUrl: '<%= asset_path('marker-shadow.png') %>',
+    shadowSize: [41, 41],
+    shadowAnchor: [12, 40]
+  },
+  aIcon: L.icon(_.extend(this.iconStyle, { iconUrl: '<%= asset_path('marker-a.png') %>' })),
+  bIcon: L.icon(_.extend(this.iconStyle, { iconUrl: '<%= asset_path('marker-b.png') %>' }))
+}
+
+var drawMap = function(tripContainer, mapContainer) {
+  var mapId = mapContainer.attr('id');
+  var map   = L.mapbox.map(mapId, MapTile.styleId);
+
+  // Start Location
+  var startLat = tripContainer.find('.startAddress').attr('data-lat');
+  var startLon = tripContainer.find('.startAddress').attr('data-lon');
+  var start = [startLat, startLon];
+
+  // Start Popup Content
+  var startPopupContent = tripContainer.find('.startAddress').text();
+
+  // End Location
+  var endLat = tripContainer.find('.endAddress').attr('data-lat');
+  var endLon = tripContainer.find('.endAddress').attr('data-lon');
+  var end = [endLat, endLon];
+
+  // End Popup Content
+  var endPopupContent = tripContainer.find('.endAddress').text();
+
+  // Show the path
+  var path = tripContainer.find('.tripSummary').attr('data-path');
+
+  var line = L.polyline(polyline.decode(path), MapTile.lineStyle);
+
+  line.addTo(map)
+
+  map.fitBounds(line.getBounds(), { padding: [10, 10] });
+
+  // Start Marker
+  L.marker(start, { title: 'Start Location' })
+   .bindPopup(endPopupContent)
+   .addTo(map);
+
+  // End Marker
+  L.marker(end, { title: 'End Location' })
+   .bindPopup(endPopupContent)
+   .addTo(map);
+}
+
+// Iterate and render the trip tiles
+$.each(trips, function(index,trip) {
+  var tripContainer = $(trip);
+  var mapContainer  = tripContainer.find('.map');
+
+  drawMap(tripContainer, mapContainer);
+});
+
+// Render the trip detail tile
+var tripContainer = $('#trip');
+
+if(tripContainer.length) {
+  var mapContainer  = tripContainer.find('.map.leaflet-container');
+  drawMap(tripContainer, mapContainer);
+}

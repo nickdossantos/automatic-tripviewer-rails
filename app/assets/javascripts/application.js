@@ -19,5 +19,5 @@
 //= require moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js
 //= require d3/d3.min.js
 //= require mapbox.js/mapbox.js
-//= require trip_tiles
+//= require trip_tiles.js.erb
 
