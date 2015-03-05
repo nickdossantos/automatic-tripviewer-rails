@@ -1,5 +1,25 @@
 module ApplicationHelper
 
+  def to_duration(seconds)
+    duration_calculator = Automatic::Utilities::DurationCalculator.new(seconds)
+
+    output = []
+
+    if duration_calculator.days?
+      output << "%s d" % [duration_calculator.days]
+    end
+
+    if duration_calculator.hours?
+      output << "%s h" % [duration_calculator.hours]
+    end
+
+    if duration_calculator.minutes?
+      output << "%s min" % [duration_calculator.minutes]
+    end
+
+    output.join(' ')
+  end
+
   def active_nav(args={})
     controllers = args.delete(:controllers).split(',').map(&:strip)
     actions     = args.delete(:actions).split(',').map(&:strip)
