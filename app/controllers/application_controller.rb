@@ -83,8 +83,8 @@ class ApplicationController < ActionController::Base
 
             all_trips.concat(trips_response.fetch('results', []))
 
-            break if true
-            #break unless links.next?
+            #break if true
+            break unless links.next?
           end
         end
       end
