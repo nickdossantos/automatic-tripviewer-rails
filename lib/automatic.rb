@@ -2,6 +2,7 @@ require 'restless_router'
 
 require File.expand_path('../automatic/models.rb', __FILE__)
 require File.expand_path('../automatic/response.rb', __FILE__)
+require File.expand_path('../automatic/utilities.rb', __FILE__)
 
 module Automatic
   def self.routes
