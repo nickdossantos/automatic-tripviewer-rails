@@ -49,7 +49,7 @@ module Automatic
       end
 
       def miles_driven
-        self.trips.total_miles_driven.floor
+        self.trips.total_miles_driven.round
       end
 
       def minutes_driven
