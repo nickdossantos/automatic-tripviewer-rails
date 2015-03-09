@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
         loop do
           next_link_href = links.next.uri
 
-          trips_request = automatic_connection.get(next_link_href, options)
+          trips_request = automatic_connection.get(next_link_href)
 
           case(trips_request.status)
           when 200
