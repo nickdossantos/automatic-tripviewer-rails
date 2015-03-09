@@ -10,12 +10,17 @@ module Automatic
       end
       alias :current_page :page
 
+      def limit
+        @attributes[:limit].to_i
+      end
+
       def per_page
         @attributes[:per_page].to_i
       end
 
       def total_pages
-        (self.total_entries / self.per_page)
+        #(self.total_entries / self.per_page)
+        (self.total_entries / self.limit)
       end
 
       def total_entries

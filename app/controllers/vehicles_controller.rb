@@ -3,8 +3,8 @@ class VehiclesController < ApplicationController
 
   def index
     pagination_params = {
-      :page     => params.fetch(:page, 1),
-      :per_page => params.fetch(:per_page, 10)
+      :page  => params.fetch(:page, 1),
+      :limit => params.fetch(:limit, 25)
     }
 
     vehicles_route   = automatic_routes.route_for('vehicles')
@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
       vehicles_data     = vehicles_response.fetch('results', [])
 
       trip_request_params = {
-        :per_page => 100
+        :limit => pagination_params[:limit]
       }
 
       trips_route   = automatic_routes.route_for('trips')

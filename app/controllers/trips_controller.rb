@@ -3,8 +3,8 @@ class TripsController < ApplicationController
 
   def index
     pagination_params = {
-      :page     => params.fetch(:page, 1),
-      :per_page => params.fetch(:per_page, 10)
+      :page  => params.fetch(:page, 1),
+      :limit => params.fetch(:limit, 25)
     }
 
     trips_route   = automatic_routes.route_for('trips')
