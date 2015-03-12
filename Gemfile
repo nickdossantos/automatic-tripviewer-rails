@@ -22,6 +22,8 @@ gem 'faraday'
 gem 'faraday_middleware',         git: "https://github.com/lostisland/faraday_middleware.git"
 gem 'faraday-http-cache'
 
+gem 'omniauth-automatic'
+
 gem 'bower-rails', '~> 0.9.2'
 
 group :development, :test do

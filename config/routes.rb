@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/download/trips(.:format)', to: 'trips#download', as: 'download_trips'
 
   scope(controller: :sessions) do
-    get '/login', action: 'create'
     get '/logout', action: 'destroy'
   end
 

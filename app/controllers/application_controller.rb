@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
   def access_token
-    ENV['AUTOMATIC_ACCESS_TOKEN']
+    if session[:automatic_credentials]
+      session[:automatic_credentials]['token']
+    else
+      ENV['AUTOMATIC_ACCESS_TOKEN']
+    end
   end
   helper_method :access_token
 
@@ -24,6 +28,7 @@ class ApplicationController < ActionController::Base
 
   def automatic_connection
     return @connection if @connection
+
     @connection = Faraday.new(url: ENV.fetch('AUTOMATIC_API_HOST')) do |conn|
       conn.use(:gzip)
       conn.response(:logger, http_request_logger)
@@ -55,6 +60,12 @@ class ApplicationController < ActionController::Base
   #
   # This will be used for the downloading, as well as for summary views
   def all_trips(uri, options={})
+    paginate = if options.has_key?(:paginate)
+      options.delete(:paginate)
+    else
+      true
+    end
+
     all_trips     = []
 
     trips_request = automatic_connection.get(uri, options)
@@ -68,7 +79,7 @@ class ApplicationController < ActionController::Base
 
       all_trips.concat(trips_response.fetch('results', []))
 
-      if links.next?
+      if links.next? && paginate
         loop do
           next_link_href = links.next.uri
 
