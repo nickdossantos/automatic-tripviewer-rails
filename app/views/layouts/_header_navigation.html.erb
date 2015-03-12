@@ -14,11 +14,5 @@
       </ul>
       </li>
     </ul>
-
-    <% if !access_token? %>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to('Log Out', logout_path, id: 'logout') %></li>
-    </ul>
-    <% end %>
   </div>
 </nav>

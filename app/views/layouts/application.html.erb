@@ -26,6 +26,11 @@
     </div>
 
     <div class="wrapper content">
+      <% if access_token? %>
+      <div class="logout">
+        <p>Logged in as <%= automatic_user.username %> <%= link_to('Logout', logout_path, id: 'logout', method: :delete) %></p>
+      </div>
+    <% end %>
       <%= yield %>
     </div>
 
