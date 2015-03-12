@@ -43,6 +43,16 @@ class ApplicationController < ActionController::Base
     @connection
   end
 
+  def automatic_user
+    return @automatic_user if @automatic_user
+
+    user_route   = automatic_routes.route_for('user')
+    user_request = automatic_connection.get(user_route.url_for(id: session[:automatic_sid]))
+
+    @automatic_user = OpenStruct.new(MultiJson.load(user_request.body))
+  end
+  helper_method :automatic_user
+
   def http_request_logger
     @http_request_logger ||= Logger.new(File.expand_path('log/requests.log', Rails.root))
   end
