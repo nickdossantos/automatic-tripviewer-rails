@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def home
     pagination_params = {
-      :limit    => params.fetch(:limit, 100),
-      :paginate => false
+      :limit    => params.fetch(:limit, 250),
+      :paginate => true
     }
 
     trips_route  = automatic_routes.route_for('trips')
