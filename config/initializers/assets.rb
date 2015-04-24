@@ -7,7 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << Emoji.images_path
 Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
-Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/
 
 
 # Precompile additional assets.
