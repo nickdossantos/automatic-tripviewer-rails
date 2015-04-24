@@ -1,3 +1,10 @@
 .mapbox-icon {
-  background-image: image-url('mapbox.js/images/icons-000000@2x.png')
+  opacity: .75;
+  background-image: image-url('mapbox.js/images/icons-000000@2x.png');
+  background-repeat: no-repeat;
+  background-size:26px 260px;
+}
+.mapbox-button-icon:before {
+  opacity:1;
+  background-image: image-url('mapbox.js/images/icons-ffffff@2x.png');
 }
