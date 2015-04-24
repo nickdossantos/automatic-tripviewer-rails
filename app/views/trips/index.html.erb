@@ -5,7 +5,7 @@
     <%= link_to(trip_path(trip.id)) do %>
       <div class="times">
         <div class="endTime"><%= trip.ended_at.to_s(:tile_date) %><br><%= trip.ended_at.to_s(:tile_time) %></div>
-        <div class="duration"><%= trip.minutes_driven.round %> min</div>
+        <div class="duration"><%= trip.minutes_duration.round %> min</div>
         <div class="startTime"><%= trip.started_at.to_s(:tile_date) %><br><%= trip.started_at.to_s(:tile_time) %></div>
         <div class="tripLine">
           <div></div>
