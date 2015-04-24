@@ -4,4 +4,5 @@
  *= require 'mapbox.js/mapbox'
  *= require 'style'
  *= require 'pagination'
+ *= require 'patches'
 */
