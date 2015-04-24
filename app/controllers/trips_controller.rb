@@ -1,5 +1,4 @@
-class TripsController < ApplicationController
-  before_filter :verify_access_token!
+class TripsController < AuthenticatedController
 
   def index
     pagination_params = {
@@ -7,37 +6,39 @@ class TripsController < ApplicationController
       :limit => params.fetch(:limit, 25)
     }
 
-    trips_route   = automatic_routes.route_for('trips')
-    trips_request = automatic_connection.get(trips_route.url_for, pagination_params)
+    trips_route = Automatic::Client.routes.route_for('trips')
+    trips_url   = trips_route.url_for(pagination_params)
 
-    case(trips_request.status)
-    when 200
-      trips_response   = MultiJson.load(trips_request.body)
-      link_header_data = trips_request.headers['link']
-      link_header      = Automatic::Response::LinkHeader.new(link_header_data)
-      metadata         = Automatic::Response::Metadata.new(trips_response.fetch('_metadata', {}))
-      pagination       = Automatic::Response::Pagination.new(pagination_params.merge!(total_entries: metadata.count))
-      trips            = Automatic::Models::Trips.new(trips_response.fetch('results', []))
+    trips_request = Automatic::Client.get(trips_url)
+
+    trips_request.on(:success) do |resp|
+      metadata = Automatic::Models::Response::Metadata.new(resp.body.fetch('_metadata', {}))
+      trips    = Automatic::Models::Trips.new(resp.body.fetch('results', []))
 
       @trips      = trips
-      @pagination = pagination
-    else
+      @pagination = Pagination.new(pagination_params.merge!(total_entries: metadata.count))
+    end
+
+    trips_request.on(:server_error) do |resp|
       render_500
     end
   end
 
   def show
-    trip_route   = automatic_routes.route_for('trip')
-    trip_request = automatic_connection.get(trip_route.url_for(id: params[:id]))
+    trip_route = Automatic::Client.routes.route_for('trip')
+    trip_url   = trip_route.url_for(id: params[:id])
 
-    case(trip_request.status)
-    when 200
-      trip_response = MultiJson.load(trip_request.body)
+    trip_request = Automatic::Client.get(trip_url)
 
-      @trip = Automatic::Models::Trip.new(trip_response)
-    when 404
+    trip_request.on(:success) do |resp|
+      @trip = Automatic::Models::Trip.new(resp.body)
+    end
+
+    trip_request.on(404) do |resp|
       render_404
-    else
+    end
+
+    trip_request.on(:server_error) do |resp|
       render_500
     end
   end
