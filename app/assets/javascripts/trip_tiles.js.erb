@@ -20,10 +20,11 @@ var MapTile = {
     shadowUrl: '<%= asset_path('marker-shadow.png') %>',
     shadowSize: [41, 41],
     shadowAnchor: [12, 40]
-  },
-  aIcon: L.icon(_.extend(this.iconStyle, { iconUrl: '<%= asset_path('marker-a.png') %>' })),
-  bIcon: L.icon(_.extend(this.iconStyle, { iconUrl: '<%= asset_path('marker-b.png') %>' }))
+  }
 }
+
+var aIcon = L.icon(_.extend(MapTile.iconStyle, { iconUrl: '<%= asset_path('marker-a.png') %>' }));
+var bIcon = L.icon(_.extend(MapTile.iconStyle, { iconUrl: '<%= asset_path('marker-b.png') %>' }));
 
 var drawMap = function(tripContainer, mapContainer) {
   var mapId = mapContainer.attr('id');
@@ -48,19 +49,24 @@ var drawMap = function(tripContainer, mapContainer) {
   // Show the path
   var path = tripContainer.find('.tripSummary').attr('data-path');
 
-  var line = L.polyline(polyline.decode(path), MapTile.lineStyle);
+  if(path) {
+    var line = L.polyline(polyline.decode(path), MapTile.lineStyle);
 
-  line.addTo(map)
-
-  map.fitBounds(line.getBounds(), { padding: [10, 10] });
+    line.addTo(map)
+    map.fitBounds(line.getBounds(), { padding: [10, 10] });
+  } else {
+    map.fitBounds([start, end], { padding: [10, 10] });
+  }
 
   // Start Marker
   L.marker(start, { title: 'Start Location' })
+   .setIcon(aIcon)
    .bindPopup(endPopupContent)
    .addTo(map);
 
   // End Marker
   L.marker(end, { title: 'End Location' })
+   .setIcon(bIcon)
    .bindPopup(endPopupContent)
    .addTo(map);
 }
