@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: https://github.com/nateklaiber/automatic-client
-  revision: d765efb53dda4555c41940f3c74baa8c376dd068
+  revision: cbaf1722b253b7db63d522ff71e662dea70fd9a9
   branch: nk/stats
   specs:
-    automatic-client (0.3.2)
+    automatic-client (0.4.1)
       activesupport
       addressable
       dotenv
@@ -224,7 +224,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  automatic-client (= 0.3.2)!
+  automatic-client (= 0.4.1)!
   bcrypt (~> 3.1.7)
   bourbon
   bower-rails (~> 0.9.2)
