@@ -45,6 +45,11 @@
         </div>
       </div>
       <div class="startAddress" data-lon="<%= @trip.start_location.longitude %>" data-lat="<%= @trip.start_location.latitude %>"><%= @trip.start_address.short_name %></div>
+      <%= form_tag(trip_tags_path(@trip.id), method: :post, id: 'trip-tag') do %>
+        <%= hidden_field_tag('trip[is_business]', false) %>
+        <label class="business-tag"><%= check_box_tag('trip[is_business]', true, (if @trip.tags.find_by_tag('business') then true else false end)) %> Tag as business trip</label>
+        <%= submit_tag('Save') %>
+      <% end %>
     </div>
   </div>
 </div>
