@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     get '/logout', action: 'destroy'
   end
 
-  resources :trips, only: [:index, :show]
+  resources :trips, only: [:index, :show] do
+    resources :tags, only: [:create, :destroy]
+  end
 end
