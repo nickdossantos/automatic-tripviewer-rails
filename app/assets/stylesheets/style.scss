@@ -582,6 +582,20 @@ h2.pageTitle {
   height: 250px;
   top: 27px;
 }
+/* Business Tagging */
+
+.business-tag {
+  clear: both;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  padding: 4px 10px;
+  float: right;
+  font-weight: normal;
+}
+
+.business-tag input {
+  margin-right: 5px;
+}
 .axis path,
 .axis line {
   fill: none;
@@ -708,4 +722,8 @@ text.key {
     background-image: image-url('automatic-logo-header@2x.png');
     background-size: 119px 33px;
   }
+}
+
+html.js form#trip-tag input[type="submit"] {
+  display: none;
 }
