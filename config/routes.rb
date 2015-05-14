@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show] do
     resources :tags, only: [:create, :destroy]
   end
+
+  resources :vehicles, only: [:index] do
+    resources :trips, only: [:index], controller: 'vehicle/trips'
+  end
 end

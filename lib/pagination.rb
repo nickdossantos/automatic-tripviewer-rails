@@ -16,6 +16,10 @@ class Pagination
     @attributes[:per_page].to_i
   end
 
+  def any?
+    self.total_pages > 0
+  end
+
   def total_pages
     (self.total_entries / self.limit)
   end

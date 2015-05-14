@@ -1,0 +1,17 @@
+<h2 class="pageTitle">Vehicles</h2>
+<div id="vehicles">
+  <% if @vehicles.any? %>
+    <% @vehicles.each do |vehicle| %>
+      <%= link_to(vehicle_trips_path(vehicle.id)) do %>
+    <div id="<%= vehicle.id %>" class="vehicle">
+    <div class="vehicleDetails">
+      <div class="display_name"><%= vehicle.display_name %></div>
+      <div class="details"><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></div>
+    </div>
+  <% end %>
+
+    <div style="background-color: <%= vehicle.color %>;" class="color"></div>
+  </div>
+<% end %>
+<% end %>
+</div>
