@@ -21,4 +21,5 @@
 //= require mapbox.js/mapbox.js
 //= require trip_tiles.js.erb
 //= require tagging.js
+//= require core.js
 
