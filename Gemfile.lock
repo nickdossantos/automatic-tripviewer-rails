@@ -5,25 +5,6 @@ GIT
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.10)
 
-GIT
-  remote: https://github.com/nateklaiber/automatic-client
-  revision: 8153042a03732393ce613fc0d0fbd82002ff3a19
-  branch: nk/stats
-  specs:
-    automatic-client (0.4.2)
-      activesupport
-      addressable
-      dotenv
-      faraday
-      faraday_middleware
-      multi_json
-      polylines
-      restless_router
-      ruby-progressbar
-      terminal-table
-      thor
-      tzinfo
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,6 +45,19 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.7)
     arel (6.0.0)
+    automatic-client (1.3.0)
+      activesupport
+      addressable
+      dotenv
+      faraday
+      faraday_middleware
+      multi_json
+      polylines
+      restless_router
+      ruby-progressbar
+      terminal-table
+      thor
+      tzinfo
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -139,7 +133,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.1)
-    polylines (0.2.0)
+    polylines (0.3.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -178,7 +172,7 @@ GEM
       json (~> 1.4)
     restless_router (0.0.3)
       addressable
-    ruby-progressbar (1.7.5)
+    ruby-progressbar (1.8.0)
     sass (3.4.13)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -200,7 +194,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    terminal-table (1.4.5)
+    terminal-table (1.5.2)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -224,7 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  automatic-client (= 0.4.2)!
+  automatic-client (= 1.3.0)
   bcrypt (~> 3.1.7)
   bourbon
   bower-rails (~> 0.9.2)
